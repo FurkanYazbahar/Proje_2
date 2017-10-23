@@ -9,7 +9,7 @@ int satir_say(FILE* dosya){
         if(c=='\n')
             satir++;
     }
-    return satir;
+    return satir+1; // Dosya sonunda EOF olduğundan son satırı saymaz. O yüzden satir+1 yaptık.
 }
 struct ogrenci{
     char numara[7];
@@ -23,7 +23,7 @@ int main ()
     clock_t t;
     t = clock();
     FILE * dosya;
-    dosya = fopen("cccc.txt","r");
+    dosya = fopen("ogrenci_kayit_bilgileri.txt","r");
     fseek(dosya,44,SEEK_SET);
     printf("satir sayisi : %d",satir_say(dosya));
     /*do
