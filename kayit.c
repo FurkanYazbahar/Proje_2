@@ -32,16 +32,19 @@ struct ogrenci
     char soyad[30];
     int  k_sirasi;
     char num[8];
-    char ogretim_tur[2];
+    char ogretim_tur[3];
 };
 int main () {
   FILE *dosya, *file;
   dosya = fopen("ogrenci.txt","r");
   file = fopen("re-writen.txt","w");
-  printf("%d\n", chrinline(dosya));
-  // WTF!
-  // fseek(dosya,60,SEEK_SET);   // Dosyanın ikinci satırından başlamak için
   STU ogr;
+  int satir = satir_say(dosya);
+  rewind(dosya);
+
+  printf("eleman sayısı%d\nsatiir sayisi: %d\n", chrinline(dosya), satir );
+  // WTF!
+  // fseek(dosya, 60,SEEK_SET); // Dosyanın ikinci satırından başlamak için
   
   printf("furkan\n");
   while(!feof(dosya))
