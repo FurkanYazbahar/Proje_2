@@ -2,23 +2,26 @@
 #include <stdio.h>
 #include <string.h>
 
-int satir_say(FILE* dosya){
+int satir_say(FILE* dosya)
+{
     int satir=0;
     char c;
-    while(feof(dosya)==NULL){
+    while(!feof(dosya))
+    {
         c=getc(dosya);
         if(c=='\n')
             satir++;
     }
     return satir+1; // Dosya sonunda EOF olduğundan son satırı saymaz. O yüzden satir+1 yaptık.
 }
-struct ogrenci{
+struct ogrenci
+{
     char ad[15];
     char soyad[15];
     char k_sirasi[4];
     char num[8];
-    char ogretim_tur[3];
- };
+    char ogretim_tur[4];
+};
 /*struct ogrenci al_dosyadan(struct ogrenci* kayit, int boy){
     struct ogrenci* olustur = (struct ogrenci*)malloc(boy*sizeof(struct ogrenci));
 
@@ -34,13 +37,15 @@ int main ()
     // struct ogrenci* kayit =(struct ogrenci*)malloc((satir+1)*sizeof(struct ogrenci));
     struct ogrenci ogr;
     int i=1;
-    while(!feof(dosya)){
+    printf("furkan");
+    while(!feof(dosya))
+    {
+        printf("furkan");
         fscanf(dosya,"%s%s%s%s%s",&ogr.num, &ogr.ad, &ogr.soyad,
-                &ogr.k_sirasi, &ogr.ogretim_tur);
+               &ogr.k_sirasi, &ogr.ogretim_tur);
         printf("Birinci Kayit %d:\n%s\t%s\t%s\t%s\t%s",i+1, ogr.num, ogr.ad, ogr.soyad,
-                ogr.k_sirasi, ogr.ogretim_tur);
+               ogr.k_sirasi, ogr.ogretim_tur);
         i++;
     }
     return 0;
 }
-
