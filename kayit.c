@@ -28,10 +28,10 @@ int chrinline(FILE* file)
 }
 struct ogrenci
 {
+    char num[8];
     char ad[30];
     char soyad[30];
     int  k_sirasi;
-    char num[8];
     char ogretim_tur[3];
 };
 int main () {
