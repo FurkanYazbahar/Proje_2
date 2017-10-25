@@ -30,22 +30,20 @@ int main ()
 {
     FILE * dosya;
     dosya = fopen("cccc.txt","r");
-    char c;
     fseek(dosya,60,SEEK_SET);   // Dosyanın ikinci satırından başlamak için
-    int satir = satir_say(dosya);
-    printf("%d  tane kayit vardir. \n",satir);
+    // int satir = satir_say(dosya);
+    //printf("%d  tane kayit vardir. \n",satir);
     // struct ogrenci* kayit =(struct ogrenci*)malloc((satir+1)*sizeof(struct ogrenci));
     struct ogrenci ogr;
     int i=1;
-    printf("furkan");
+    printf("furkan\n");
     while(!feof(dosya))
     {
-        printf("furkan");
-        fscanf(dosya,"%s%s%s%s%s",&ogr.num, &ogr.ad, &ogr.soyad,
-               &ogr.k_sirasi, &ogr.ogretim_tur);
-        printf("Birinci Kayit %d:\n%s\t%s\t%s\t%s\t%s",i+1, ogr.num, ogr.ad, ogr.soyad,
+        fscanf(dosya,"%s%s%s%s%s",ogr.num, ogr.ad, ogr.soyad,
                ogr.k_sirasi, ogr.ogretim_tur);
-        i++;
+        printf("%s\t%s\t%s\t%s\t%s\n",ogr.num, ogr.ad, ogr.soyad,
+               ogr.k_sirasi, ogr.ogretim_tur);
+
     }
     return 0;
 }
