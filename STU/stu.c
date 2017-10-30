@@ -21,29 +21,25 @@ int chrinline (FILE *file) {
     count++;
   return count;
 }
+
 int main (int argc, char* argv[]) {
   FILE *dosya;
-  dosya = fopen ("ogrenci.txt","r");
-
+  dosya = fopen ("ogrenci.txt", "r");
   passline (dosya);
-
-  STU *stu_1, *stu_2, *stu_3;
-  //elemanları çek ve yükle
-  add_stu (dosya, &stu_1);
-  add_stu (dosya, &stu_2);
-  add_stu (dosya, &stu_3);
-
-  // öğrenci içerikleri
-  puts_stu (stu_1);
-  puts_stu (stu_2);
-  puts_stu (stu_3);
-
-  // stu1'e 2 ve 3 ü bağla
-  link (stu_1, stu_2, stu_3);
   
-  // stu_1'e bağlı bütün elemanları sil
-  dell_stus (stu_1);
+  STU *stu_1;
+  get_stu (dosya, stu_1);
 
-  fclose(dosya);
+  stu_1 = fget_all_stu (dosya, NULL);
+
+  int i = 0;
+  for (i = 0; stu_1->next != NULL; i++, stu_1 = stu_1->next)
+    puts_stu (stu_1);
+  
+  printf ("toplam ogrenci sayisi: %d\n", i);
+  // stu_1'e bağlı bütün elemanları sil
+  releaseTheHounds (stu_1);
+  
+  fclose (dosya);
   return 0;
 }
